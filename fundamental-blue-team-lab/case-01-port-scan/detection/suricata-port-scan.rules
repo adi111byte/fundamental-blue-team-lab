@@ -1,0 +1,8 @@
+# Placeholder. Replace with the actual rule used or reviewed on pfSense's Suricata.
+# Example structure (edit with real values after testing in the lab):
+#
+# alert tcp any any -> $HOME_NET any (msg:"Possible port scan detected"; \
+#   flags:S; threshold:type both, track by_src, count 20, seconds 10; \
+#   sid:1000001; rev:1;)
+#
+# Explain in this file (or in the case README) why the threshold values were chosen.
