@@ -39,9 +39,14 @@ hydra -l adi -P small-wordlist.txt ssh://192.168.20.10 -t 4
 ```
 - **Result:** [FILL IN — number of attempts, whether a valid password was found]
 
+![PLACEHOLDER: Hydra terminal output showing the attack running](evidence/02-hydra-output.png)
+
 ### B. Wazuh Alert (Dashboard)
 - **Source:** Wazuh Dashboard > Security Events, filtered to agent `192.168.20.10`
-- [FILL IN screenshot + description of the alert entry, including rule ID and match count]
+
+![PLACEHOLDER: Wazuh dashboard alert detail, rule ID and match count visible](evidence/02-wazuh-alert.png)
+
+- [FILL IN description of the alert entry, including rule ID and match count]
 
 ### C. Raw Log Cross-Reference (Ubuntu)
 ```bash
@@ -49,10 +54,15 @@ grep "Failed password" /var/log/auth.log | tail -40 > 02-auth-bruteforce.log
 ```
 Saved to `evidence/02-auth-bruteforce.log`. Used both as a manual reference and as input to the cross-check script below.
 
+![PLACEHOLDER: terminal output of the grep command / auth.log excerpt](evidence/02-authlog-excerpt.png)
+
 ### D. Cross-Check: Raw Log vs Wazuh Count
 ```bash
 python scripts/crosscheck_auth_log.py evidence/02-auth-bruteforce.log --wazuh-count <number from dashboard>
 ```
+
+![PLACEHOLDER: terminal output of the cross-check script result](evidence/02-crosscheck-output.png)
+
 - **Raw auth.log attempts:** [FILL IN]
 - **Wazuh reported count:** [FILL IN]
 - **Match / Gap:** [FILL IN — if there's a gap, note the likely cause from the script's output]
@@ -65,6 +75,9 @@ This step exists to verify Wazuh isn't just alerting, but alerting *completely* 
 
 ### Phase 1: Preparation
 1. Confirm the Wazuh agent on Ubuntu shows **Active** on the manager dashboard (see `lab-setup.md` for the pre-flight connectivity check).
+
+![PLACEHOLDER: Wazuh Agents page showing the Ubuntu agent status as Active](evidence/02-agent-active.png)
+
 2. Optionally tail the agent log on Ubuntu to watch events in real time:
 ```bash
    tail -f /var/ossec/logs/ossec.log
@@ -138,7 +151,6 @@ A Wazuh alert referencing repeated `sshd` authentication failures from `192.168.
 ## Detection Configuration
 [FILL IN — note whether the default Wazuh SSH brute force rule was used as-is, or whether a custom rule/decoder was added, and why]
 
-
----
+## Files
 
 > **Notes for Future Reference:** This case shows the difference between manually grepping a log file and having a SIEM correlate events automatically, and why it's still worth checking the SIEM's work rather than trusting it blindly. The next step, case-03, moves away from live network attacks and into analyzing phishing domains, a different detection surface entirely (DNS/email, not host or network traffic).
