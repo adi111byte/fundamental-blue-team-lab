@@ -1,4 +1,4 @@
-# Lab Setup — Case 01: Port Scan Detection
+# Lab Setup - Case 01: Port Scan Detection
 
 Isolated VMware lab with pfSense as router/firewall between two host-only segments. Traffic from the attacker to the target passes through pfSense, which is what makes the Suricata alert (or lack of one) in this case meaningful.
 
@@ -6,16 +6,16 @@ Isolated VMware lab with pfSense as router/firewall between two host-only segmen
 
 ```text
                         ┌──────────────────────────────────┐
-                        │              Internet             │
-                        │   (package/rule updates only)     │
-                        └────────────────┬───────────────────┘
+                        │              Internet            │
+                        │   (package/rule updates only)    │
+                        └────────────────┬─────────────────┘
                                           │ WAN
                         ┌─────────────────┴─────────────────┐
-                        │               pfSense              │
-                        │  LAN  (em1): 192.168.10.1/24       │
-                        │  OPT1 (em2): 192.168.20.1/24       │
-                        │  Suricata enabled on OPT1           │
-                        └───────┬──────────────────┬─────────┘
+                        │               pfSense             │
+                        │  LAN  (em1): 192.168.10.1/24      │
+                        │  OPT1 (em2): 192.168.20.1/24      │
+                        │  Suricata enabled on OPT1         │
+                        └───────┬──────────────────┬────────┘
                                 │                  │
                 LAN segment     │                  │   OPT1 segment
                 192.168.10.0/24 │                  │   192.168.20.0/24
