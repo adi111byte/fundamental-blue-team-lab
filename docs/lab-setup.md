@@ -1,1 +1,6 @@
-<img width="665" height="346" alt="image" src="https://github.com/user-attachments/assets/22e50a77-e067-442e-a6a7-bb7a01152adc" />
+Case-01: Port Scan Detection
+Layer: Network (L3/L4)
+
+Key Tools: Nmap (-sS), Suricata (Stream Engine), tcpdump
+
+Detection Logic: Behavioral anomaly (incomplete TCP handshake) rather than signature match.
